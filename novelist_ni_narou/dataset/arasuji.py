@@ -79,6 +79,9 @@ class Arasuji(object):
 
     def get_train_data(self,batch_size):
         idx = np.random.choice(self.train_idx, batch_size, replace=False)
+        l = len(self.train_idx)
+        bs = batch_size if l > batch_size else l
+        idx = np.random.choice(self.train_idx, bs, replace=False)
         return self.data[idx]
 
     def get_test_data(self, batch_size):
